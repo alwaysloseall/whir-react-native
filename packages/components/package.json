@@ -1,6 +1,6 @@
 {
   "name": "@whir-react-native/components",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React Native 组件库",
   "main": "es/index.js",
   "module": "es/index.js",
@@ -39,13 +39,13 @@
     "@react-navigation/stack": "^5.9.0",
     "babel-plugin-import": "^1.13.0",
     "babel-plugin-polyfill-corejs2": "^0.1.10",
+    "react": "16.13.1",
+    "react-native": "0.63.0",
     "react-native-gesture-handler": "^1.7.0",
     "react-native-root-siblings": "3.2.3",
     "react-native-safe-area-context": "^3.1.1",
     "react-native-screens": "^2.9.0",
-    "react-native-splash-screen": "^3.2.0",
-    "react": "16.13.1",
-    "react-native": "0.63.0"
+    "react-native-splash-screen": "^3.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
