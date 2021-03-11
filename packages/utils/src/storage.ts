@@ -30,7 +30,7 @@ function multiRemove(...keys) {
   return AsyncStorage.multiRemove([...keys])
 }
 
-const Storage = {
+export const Storage = {
   clear,
   get,
   set,
@@ -38,5 +38,3 @@ const Storage = {
   multiGet,
   multiRemove,
 }
-
-export default Storage

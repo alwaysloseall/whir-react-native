@@ -1,4 +1,4 @@
-import Storage from './storage'
+import { Storage } from './storage'
 
 const USER_INFO = 'USER_INFO'
 

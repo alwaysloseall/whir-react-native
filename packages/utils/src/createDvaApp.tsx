@@ -1,9 +1,10 @@
+  // @ts-nocheck
 import React from 'react'
 import { create } from 'dva-core'
 import createLoading from 'dva-loading'
 import { Provider } from 'react-redux'
 import { errorHandler } from './api'
-import Storage from './storage'
+import { Storage } from './storage'
 import './ErrorUtils'
 
 const DVA_STORAGE_STATE = 'DVA_STORAGE_STATE'
@@ -70,6 +71,7 @@ export const createDvaApp = ({ models, App }) => {
   // 获取 dva 最终产生的 redux store
   const store = app._store
 
+  // @ts-ignore
   global.g_app = app
 
   return _ => (
