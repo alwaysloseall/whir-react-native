@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "moduleResolution": "node",
+    "declaration": true,
+    "jsx": "preserve",
+    "allowJs": false,
+    "esModuleInterop": true,
+    "baseUrl": "./",
+    "noImplicitAny": false,
+    "paths": {
+      "@whir-react-native/components": ["./packages/components/src"],
+      "@whir-react-native/components/*": ["./packages/components/src/*"],
+      "@whir-react-native/utils": ["./packages/utils/src"],
+      "@whir-react-native/utils/*": ["./packages/utils/src/*"]
+    }
+  },
+  "exclude": ["**/dist/", "**/node_moduels/"]
+}
