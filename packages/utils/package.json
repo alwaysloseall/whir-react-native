@@ -32,6 +32,7 @@
     "dva-loading": "^3.0.20",
     "dva-model-extend": "^0.1.2",
     "moment": "^2.29.1",
+    "rc-form": "^2.4.11",
     "react": "16.13.1",
     "react-native": "0.63.0",
     "react-native-fs": "^2.16.6",

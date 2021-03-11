@@ -13,7 +13,8 @@
       "@whir-react-native/components/*": ["./packages/components/src/*"],
       "@whir-react-native/utils": ["./packages/utils/src"],
       "@whir-react-native/utils/*": ["./packages/utils/src/*"]
-    }
+    },
+    "types": []
   },
   "exclude": ["**/dist/", "**/node_moduels/"]
 }

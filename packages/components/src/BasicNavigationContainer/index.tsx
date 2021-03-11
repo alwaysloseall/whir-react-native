@@ -22,6 +22,7 @@ export default ({ children, ...props }) => {
   useEffect(() => {
     const onBackPress = () => {
       /** 被其他界面劫持 */
+      // @ts-ignore
       if (global.backPressSetting) {
         return true
       }
@@ -76,6 +77,7 @@ export default ({ children, ...props }) => {
   }
 
   return (
+    // @ts-ignore
     <AntdProvider>
       <StatusBar
         hidden={false}
@@ -84,6 +86,7 @@ export default ({ children, ...props }) => {
         backgroundColor="transparent"
       />
       <NavigationContainer
+        //@ts-ignore
         ref={navigationRef}
         initialState={initialState}
         onStateChange={state => {

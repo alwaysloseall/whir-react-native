@@ -28,10 +28,9 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "father-build": "^1.18.4",
+    "father": "^2.30.2",
     "lerna": "^3.22.1"
   }
 }

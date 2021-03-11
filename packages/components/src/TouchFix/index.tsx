@@ -6,7 +6,7 @@
 import React, { Component } from "react";
 import { TouchableOpacity } from "react-native";
 
-export default class TouchFix extends Component {
+export default class TouchFix extends Component<any> {
     state = {
         isDisable: false
     };

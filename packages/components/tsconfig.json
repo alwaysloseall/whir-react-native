@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["es6"],
+    "moduleResolution": "node",
+    "declaration": true,
+    "jsx": "preserve",
+    "allowJs": false,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "types": []
+  },
+  "exclude": ["**/dist/", "**/node_moduels/"]
+}
