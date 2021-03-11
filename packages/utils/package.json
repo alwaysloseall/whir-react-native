@@ -1,0 +1,47 @@
+{
+  "name": "@whir-react-native/utils",
+  "version": "0.0.0",
+  "description": "React Native 工具库",
+  "main": "es/index.js",
+  "module": "es/index.js",
+  "types": "es/index.d.ts",
+  "authors": [
+    "vldh <alwaysloseall@gmail.com>"
+  ],
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:alwaysloseall/whir-react-native.git",
+    "directory": "packages/utils"
+  },
+  "scripts": {
+    "compile": "father-build build",
+    "watch": "father-build build --watch"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/"
+  },
+  "files": [
+    "es"
+  ],
+  "dependencies": {
+    "@react-native-community/async-storage": "^1.11.0",
+    "babel-plugin-import": "^1.13.0",
+    "dva-core": "^2.0.2",
+    "dva-loading": "^3.0.20",
+    "dva-model-extend": "^0.1.2",
+    "moment": "^2.29.1",
+    "react": "16.13.1",
+    "react-native": "0.63.0",
+    "react-native-fs": "^2.16.6",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-proposal-decorators": "^7.10.5",
+    "@babel/runtime": "^7.8.4",
+    "babel-plugin-import": "^1.13.0",
+    "metro-react-native-babel-preset": "^0.59.0"
+  }
+}

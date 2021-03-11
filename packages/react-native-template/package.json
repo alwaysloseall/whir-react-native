@@ -1,0 +1,31 @@
+{
+  "name": "@whir-react-native/react-native-template",
+  "version": "0.0.0",
+  "keywords": [
+    "react-native",
+    "react-native-template",
+    "template"
+  ],
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start"
+  },
+  "files": [
+    "template",
+    "template.config.js"
+  ],
+  "description": "The base template for Create React-Native App.",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:alwaysloseall/whir-react-native.git",
+    "directory": "packages/react-native-template"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=10"
+  }
+}

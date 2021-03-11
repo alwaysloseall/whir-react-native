@@ -1,0 +1,33 @@
+{
+  "name": "whir-react-native",
+  "description": "whir-react-native",
+  "private": true,
+  "version": "0.0.0",
+  "author": "vldh <alwaysloseall@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:alwaysloseall/whir-react-native.git"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "bootstrap": "npx lerna bootstrap",
+    "clean": "npx lerna clean && rimraf yarn.lock && rimraf node_modules",
+    "publish": "lerna publish",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "c:c": "yarn workspace @whir-react-native/components run compile",
+    "c:u": "yarn workspace @whir-react-native/utils run compile",
+    "c:all": "yarn c:c && yarn c:u",
+    "test": "jest",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "father-build": "^1.18.4",
+    "lerna": "^3.22.1"
+  }
+}
