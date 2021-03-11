@@ -1,6 +1,6 @@
 {
   "name": "@whir-react-native/components",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "React Native 组件库",
   "main": "es/index.js",
   "module": "es/index.js",
@@ -27,6 +27,7 @@
   ],
   "dependencies": {
     "@ant-design/react-native": "^4.0.7",
+    "@babel/plugin-proposal-decorators": "^7.10.5",
     "@react-native-community/async-storage": "^1.11.0",
     "@react-native-community/cameraroll": "^4.0.0",
     "@react-native-community/masked-view": "^0.1.10",
@@ -38,9 +39,8 @@
     "@react-navigation/native": "^5.7.3",
     "@react-navigation/stack": "^5.9.0",
     "babel-plugin-import": "^1.13.0",
-    "babel-plugin-polyfill-corejs2": "^0.1.10",
     "babel-plugin-module-resolver": "^4.1.0",
-    "@babel/plugin-proposal-decorators": "^7.10.5",
+    "babel-plugin-polyfill-corejs2": "^0.1.10",
     "react": "16.13.1",
     "react-native": "0.63.0",
     "react-native-gesture-handler": "^1.7.0",
