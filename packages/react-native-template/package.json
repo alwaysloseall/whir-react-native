@@ -22,10 +22,12 @@
     "directory": "packages/react-native-template"
   },
   "publishConfig": {
-    "registry": "http://registry.npmjs.org/"
+    "registry": "http://registry.npmjs.org/",
+    "access": "public"
   },
   "license": "MIT",
   "engines": {
     "node": ">=10"
-  }
+  },
+  "gitHead": "12aec5ef6140f79dc986f3293ee4654765c1ee82"
 }

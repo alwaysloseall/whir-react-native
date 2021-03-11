@@ -11,6 +11,10 @@
   "workspaces": [
     "packages/*"
   ],
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/",
+    "access": "public"
+  },
   "scripts": {
     "bootstrap": "npx lerna bootstrap",
     "clean": "npx lerna clean && rimraf yarn.lock && rimraf node_modules",
