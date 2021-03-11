@@ -13,6 +13,18 @@ A peripheral tools of react native, Including dva,antd mobile,async-storage,@rea
 - [ ] 文档持续部署
 - [ ] 如何参与本项目（包含 Lint, Test, MR 等相关说明）
 
+## Getting Started
+
+已有的项目：
+```bash
+yarn add @whir-react-native/utils @whir-react-native/components
+```
+
+新项目：
+```bash
+npx react-native init MyApp --template @whir-react-native/react-native-template
+```
+
 ## 相关文档
 
 - [react-native 介绍](./doc/react-native.md)
