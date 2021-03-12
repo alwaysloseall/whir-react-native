@@ -25,6 +25,48 @@ yarn add @whir-react-native/utils @whir-react-native/components
 npx react-native init MyApp --template @whir-react-native/react-native-template
 ```
 
+### 基本项目配置
+
+#### 1. 如果使用的是 @whir-react-native/react-native-template 模板，可以直接使用
+
+#### 2. 安装了相关依赖的使用方式：
+
+创建目录 src/models
+
+创建文件 src/models/index.js 导出所有的dva.js models
+```js
+// src/models/index.js
+module.exports = [
+  require("./demo").default,
+]
+```
+
+创建文件 src/index.js
+
+src/App.js 为 ```@react-navigation/native``` 提供的路由组件
+```js
+// src/index.js
+import models from "./models";
+import App from "./App";
+
+export default {
+    models,
+    App
+}
+```
+
+修改 根目录下的 /index.js 文件
+```js
+/** /index.js */
+import { AppRegistry } from 'react-native'
+import { createDvaApp } from '@whir-react-native/utils'
+import appConfig from './src/index'
+import { name as appName } from './app.json'
+
+AppRegistry.registerComponent(appName, () => createDvaApp(appConfig))
+```
+
+现在，你可以使用到 dva.js，antd-mobile，@react-navigation/native 的相关功能了
 ## 相关文档
 
 - [react-native 介绍](./doc/react-native.md)
