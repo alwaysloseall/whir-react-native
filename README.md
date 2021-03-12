@@ -146,25 +146,6 @@ const styles = fixStyleSheet({
 })
 ```
 
-- fixStyleSheet 方法中的 flex，borderWitdh 属性值需要单独处理
-
-```jsx
-const Demo = () => <View style={styles.demo} />
-
-const styles = fixStyleSheet({
-  demo: {
-    width: 100,
-    height: 100,
-    flex: {
-      value: 1,
-    },
-    borderWitdh: {
-      value: 1,
-    },
-  },
-})
-```
-
 ## 路由
 
 项目采用的是 [`@react-navigation/native`](https://reactnavigation.org/) 路由方案, 有 stack 路由和 TabNavigator
