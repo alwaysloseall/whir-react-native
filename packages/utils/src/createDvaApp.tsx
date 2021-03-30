@@ -1,4 +1,4 @@
-  // @ts-nocheck
+// @ts-nocheck
 import React from 'react'
 import { create } from 'dva-core'
 import createLoading from 'dva-loading'
@@ -11,43 +11,52 @@ const DVA_STORAGE_STATE = 'DVA_STORAGE_STATE'
 
 let isInit = false
 
-export const createDvaApp = ({ models, App }) => {
+export const createDvaApp = ({
+  models,
+  App,
+  onError,
+  saveState = true,
+}: {
+  models: Array<any>
+  App: () => JSX.Element
+  onError?: (err, dispatch) => void
+  saveState?: boolean
+}) => {
   // APP初始化的时候会把所有模型的 initState 收集起来，以便于注销账号的时候重置 store
   let initialState = {}
 
   // 创建 dva
   const app = create({
     initialState: {},
-    // onError(e, dispatch) {
-    //   e.preventDefault()
-
-    //   toast.fail(e.message)
-    // },
-    onError: errorHandler,
-    onStateChange: state => {
-      if (__DEV__ && isInit) {
-        Storage.set(DVA_STORAGE_STATE, JSON.stringify(state))
-      }
-    },
-    onReducer: reducer => {
-      return (state, action) => {
-        const newState = reducer(state, action)
-        // if (action.type.indexOf('session/logout') !== -1) {
-        //   console.log('清理store，仅保留{nav,loading}')
-        //   return {
-        //     ...initialState,
-        //     loading: newState.loading,
-        //   }
-        // }
-        if (action.type.indexOf(DVA_STORAGE_STATE) !== -1 && __DEV__) {
-          isInit = true
-          if (action.payload.state) {
-            return { ...state, ...action.payload.state }
-          }
+    onError: onError || errorHandler,
+    onStateChange:
+      saveState &&
+      (state => {
+        if (__DEV__ && isInit) {
+          Storage.set(DVA_STORAGE_STATE, JSON.stringify(state))
         }
-        return newState
-      }
-    },
+      }),
+    onReducer:
+      saveState &&
+      (reducer => {
+        return (state, action) => {
+          const newState = reducer(state, action)
+          // if (action.type.indexOf('session/logout') !== -1) {
+          //   console.log('清理store，仅保留{nav,loading}')
+          //   return {
+          //     ...initialState,
+          //     loading: newState.loading,
+          //   }
+          // }
+          if (action.type.indexOf(DVA_STORAGE_STATE) !== -1 && __DEV__) {
+            isInit = true
+            if (action.payload.state) {
+              return { ...state, ...action.payload.state }
+            }
+          }
+          return newState
+        }
+      }),
   })
 
   // 加载插件：effect loading
@@ -62,11 +71,11 @@ export const createDvaApp = ({ models, App }) => {
   // 启动 dva
   app.start()
 
-  if (__DEV__) {
-    Storage.get(DVA_STORAGE_STATE).then(res => {
-      const state = JSON.parse(res)
-    })
-  }
+  // if (__DEV__) {
+  //   Storage.get(DVA_STORAGE_STATE).then(res => {
+  //     const state = JSON.parse(res)
+  //   })
+  // }
 
   // 获取 dva 最终产生的 redux store
   const store = app._store
