@@ -1,6 +1,6 @@
 {
   "name": "@whir-react-native/utils",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "React Native 工具库",
   "main": "es/index.js",
   "module": "es/index.js",
