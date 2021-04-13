@@ -41,13 +41,6 @@ export const createDvaApp = ({
       (reducer => {
         return (state, action) => {
           const newState = reducer(state, action)
-          // if (action.type.indexOf('session/logout') !== -1) {
-          //   console.log('清理store，仅保留{nav,loading}')
-          //   return {
-          //     ...initialState,
-          //     loading: newState.loading,
-          //   }
-          // }
           if (action.type.indexOf(DVA_STORAGE_STATE) !== -1 && __DEV__) {
             isInit = true
             if (action.payload.state) {
@@ -71,11 +64,17 @@ export const createDvaApp = ({
   // 启动 dva
   app.start()
 
-  // if (__DEV__) {
-  //   Storage.get(DVA_STORAGE_STATE).then(res => {
-  //     const state = JSON.parse(res)
-  //   })
-  // }
+  if (__DEV__ && saveState) {
+    Storage.get(DVA_STORAGE_STATE).then(res => {
+      const state = JSON.parse(res)
+      app._store.dispatch({
+        type: DVA_STORAGE_STATE,
+        payload: {
+          state,
+        },
+      })
+    })
+  }
 
   // 获取 dva 最终产生的 redux store
   const store = app._store
