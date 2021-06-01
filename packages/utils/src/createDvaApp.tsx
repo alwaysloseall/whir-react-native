@@ -29,27 +29,27 @@ export const createDvaApp = ({
   const app = create({
     initialState: {},
     onError: onError || errorHandler,
-    onStateChange:
-      saveState &&
-      (state => {
-        if (__DEV__ && isInit) {
-          Storage.set(DVA_STORAGE_STATE, JSON.stringify(state))
-        }
-      }),
-    onReducer:
-      saveState &&
-      (reducer => {
-        return (state, action) => {
-          const newState = reducer(state, action)
-          if (action.type.indexOf(DVA_STORAGE_STATE) !== -1 && __DEV__) {
-            isInit = true
-            if (action.payload.state) {
-              return { ...state, ...action.payload.state }
-            }
+    onStateChange: saveState
+      ? state => {
+          if (__DEV__ && isInit) {
+            Storage.set(DVA_STORAGE_STATE, JSON.stringify(state))
           }
-          return newState
         }
-      }),
+      : undefined,
+    onReducer: saveState
+      ? reducer => {
+          return (state, action) => {
+            const newState = reducer(state, action)
+            if (action.type.indexOf(DVA_STORAGE_STATE) !== -1 && __DEV__) {
+              isInit = true
+              if (action.payload.state) {
+                return { ...state, ...action.payload.state }
+              }
+            }
+            return newState
+          }
+        }
+      : undefined,
   })
 
   // 加载插件：effect loading
