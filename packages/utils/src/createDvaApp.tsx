@@ -5,6 +5,7 @@ import createLoading from 'dva-loading'
 import { Provider } from 'react-redux'
 import { errorHandler } from './api'
 import { Storage } from './storage'
+import _ from 'lodash'
 import './ErrorUtils'
 
 const DVA_STORAGE_STATE = 'DVA_STORAGE_STATE'
@@ -43,7 +44,8 @@ export const createDvaApp = ({
             if (action.type.indexOf(DVA_STORAGE_STATE) !== -1 && __DEV__) {
               isInit = true
               if (action.payload.state) {
-                return { ...state, ...action.payload.state }
+                const originState = _.cloneDeep(state)
+                return _.merge(originState, action.payload.state)
               }
             }
             return newState
