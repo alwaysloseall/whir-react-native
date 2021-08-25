@@ -67,14 +67,6 @@ AppRegistry.registerComponent(appName, () => createDvaApp(appConfig))
 ```
 
 现在，你可以使用到 dva.js，antd-mobile，@react-navigation/native 的相关功能了
-## 相关文档
-
-- [react-native 介绍](./doc/react-native.md)
-
-## 为什么它是原生APP
-![why1](./doc/why1.png)
-
-![why2](./doc/why2.png)
 
 ## 样式
 
@@ -106,89 +98,6 @@ const styles = fixStyleSheet({
 ```jsx
 import { setPX } from '@whir-react-native/utils'
 const Demo = () => <View style={{ width: setPX(100), height: setPX(100) }} />
-```
-
-### 一些注意事项（与 web 项目不同之处）：
-
-- flex 布局
-
-1. 所有的组件都是采用的 flex 布局，且默认的 flexDirection 为 column
-2. flex 属性决定元素在主轴上如何填满可用区域。整个区域会根据每个元素设置的 flex 属性值被分割成多个部分。
-
-> 在下面的例子中，在设置了 flex: 1 的容器 view 中，有红色，黄色和绿色三个子 view。红色 view 设置了 flex: 1，黄色 view 设置了 flex: 2，绿色 view 设置了 flex: 3。1+2+3 = 6，这意味着红色 view 占据整个区域的 1/6，黄色 view 占据整个区域的 2/6，绿色 view 占据整个区域的 3/6。
-
-```jsx
-const FlexDirectionBasics = () => {
-  return (
-    <View style={{ flex: 1 }}>
-      <View style={{ flex: 1, backgroundColor: 'red' }} />
-      <View style={{ flex: 2, backgroundColor: 'yellow' }} />
-      <View style={{ flex: 3, backgroundColor: 'green' }} />
-    </View>
-  )
-}
-```
-
-- 多个样式添加
-
-```jsx
-// 组件的style属性支持传递数组
-const Demo = () => <View style={[styles.demo, styles.demo2]} />
-
-const styles = fixStyleSheet({
-  demo: {
-    width: 100,
-    height: 100,
-  },
-  demo2: {
-    backgroundColor: '#000',
-  },
-})
-```
-
-## 路由
-
-项目采用的是 [`@react-navigation/native`](https://reactnavigation.org/) 路由方案, 有 stack 路由和 TabNavigator
-
-1. 基础路由设计
-
-```mermaid
-graph TD;
-App --> launch{launch}
-launch --> | has token | tabbar[tabbar];
-launch --> | no token | login[login];
-login --> tabbar
-tabbar --> home
-tabbar --> home2
-tabbar --> home3
-home --> others1[others]
-home --> others2[others]
-```
-
-2. 路由跳转
-
-- 向 stack 路由跳转
-
-```ts
-navigation.navigate(name: string, params: object)
-
-// 重定向路由
-navigation.reset({
-  index: number,
-  routes: [{ name: string, params: object }],
-})
-```
-
-- 向 tabbar 跳转
-
-```ts
-navigation.navigate(name: 'tabbar', params: object)
-
-// 重定向路由
-navigation.reset({
-  index: number,
-  routes: [{ name: 'tabbar', params: object }],
-})
 ```
 
 ## 安卓返回键
