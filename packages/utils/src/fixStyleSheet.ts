@@ -16,7 +16,7 @@ interface objectMap {
 
 function fixStyleSheet<
   T extends StyleSheet.NamedStyles<T> | StyleSheet.NamedStyles<any>
->(styles: T | StyleSheet.NamedStyles<T>) {
+>(styles: T | StyleSheet.NamedStyles<T>): T {
   let newStyles: any = {}
   Object.keys(styles).forEach(key => {
     let newSubStyle: any = {}
