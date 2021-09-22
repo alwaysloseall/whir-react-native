@@ -6,20 +6,33 @@ import {
   Linking,
   Platform,
 } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native'
+import {
+  NavigationContainer,
+  NavigationContainerProps,
+} from '@react-navigation/native'
 import { Provider as AntdProvider } from '@ant-design/react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import { navigationRef } from '../RootNavigation'
 
+interface BasicNavigationContainerProps extends NavigationContainerProps {
+  preventBackPressDefault?: boolean
+}
+
 const PERSISTENCE_KEY = 'NAVIGATION_STATE'
 
-export default ({ children, ...props }) => {
+export default function BasicNavigationContainer({
+  preventBackPressDefault,
+  children,
+  ...props
+}: BasicNavigationContainerProps) {
   const [isMainScreen, setIsMainScreen] = useState(false)
   const [pressBackTime, setPressBackTime] = useState(0)
   const [isReady, setIsReady] = React.useState(__DEV__ ? false : true)
   const [initialState, setInitialState] = React.useState()
 
   useEffect(() => {
+    if (preventBackPressDefault) return
+
     const onBackPress = () => {
       /** 被其他界面劫持 */
       // @ts-ignore
@@ -44,7 +57,7 @@ export default ({ children, ...props }) => {
     BackHandler.addEventListener('hardwareBackPress', onBackPress)
     return () =>
       BackHandler.removeEventListener('hardwareBackPress', onBackPress)
-  }, [isMainScreen, pressBackTime])
+  }, [isMainScreen, pressBackTime, preventBackPressDefault])
 
   React.useEffect(() => {
     const restoreState = async () => {
