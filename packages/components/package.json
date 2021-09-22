@@ -1,6 +1,6 @@
 {
   "name": "@whir-react-native/components",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "React Native 组件库",
   "main": "es/index.js",
   "module": "es/index.js",
