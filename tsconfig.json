@@ -9,12 +9,24 @@
     "baseUrl": "./",
     "noImplicitAny": false,
     "paths": {
-      "@whir-react-native/components": ["./packages/components/src"],
-      "@whir-react-native/components/*": ["./packages/components/src/*"],
-      "@whir-react-native/utils": ["./packages/utils/src"],
-      "@whir-react-native/utils/*": ["./packages/utils/src/*"]
+      "@whir-react-native/components": [
+        "./packages/components/src"
+      ],
+      "@whir-react-native/components/*": [
+        "./packages/components/src/*"
+      ],
+      "@whir-react-native/utils": [
+        "./packages/utils/src"
+      ],
+      "@whir-react-native/utils/*": [
+        "./packages/utils/src/*"
+      ]
     },
-    "types": []
+    "types": [],
+    "skipLibCheck": true
   },
-  "exclude": ["**/dist/", "**/node_moduels/"]
+  "exclude": [
+    "**/dist/",
+    "node_modules/**"
+  ]
 }

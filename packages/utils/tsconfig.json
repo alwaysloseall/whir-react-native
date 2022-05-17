@@ -1,14 +1,20 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": ["es2016"],
+    "lib": [
+      "es2016"
+    ],
     "moduleResolution": "node",
     "declaration": true,
     "jsx": "preserve",
     "allowJs": false,
     "esModuleInterop": true,
     "noImplicitAny": false,
-    "types": []
+    "types": [],
+    "skipLibCheck": true
   },
-  "exclude": ["**/dist/", "**/node_moduels/"]
+  "exclude": [
+    "**/dist/",
+    "**/node_modules/**"
+  ]
 }
