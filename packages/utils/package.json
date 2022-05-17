@@ -19,7 +19,7 @@
     "watch": "father-build build --watch"
   },
   "publishConfig": {
-    "registry": "http://registry.npmjs.org/",
+    "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
   "files": [
