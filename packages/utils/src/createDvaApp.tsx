@@ -12,17 +12,26 @@ const DVA_STORAGE_STATE = 'DVA_STORAGE_STATE'
 
 let isInit = false
 
+export interface createDvaAppOptions {
+  /** dva models */
+  models: Array<any>
+  /** Root Component */
+  App: () => JSX.Element
+  /** 错误处理 */
+  onError?: (err, dispatch) => void
+  /** dev时保留state，默认true */
+  saveState?: boolean
+  /** 生产环境保留state，默认false */
+  prodSaveState?: boolean
+}
+
 export const createDvaApp = ({
   models,
   App,
   onError,
   saveState = true,
-}: {
-  models: Array<any>
-  App: () => JSX.Element
-  onError?: (err, dispatch) => void
-  saveState?: boolean
-}) => {
+  prodSaveState = false,
+}: createDvaAppOptions) => {
   // APP初始化的时候会把所有模型的 initState 收集起来，以便于注销账号的时候重置 store
   let initialState = {}
 
@@ -32,26 +41,28 @@ export const createDvaApp = ({
     onError: onError || errorHandler,
     onStateChange: saveState
       ? state => {
-          if (__DEV__ && isInit) {
+          if ((__DEV__ || prodSaveState) && isInit) {
             Storage.set(DVA_STORAGE_STATE, JSON.stringify(state))
           }
         }
-      : undefined,
-    onReducer: saveState
-      ? reducer => {
-          return (state, action) => {
-            const newState = reducer(state, action)
-            if (action.type.indexOf(DVA_STORAGE_STATE) !== -1 && __DEV__) {
-              isInit = true
-              if (action.payload.state) {
-                const originState = _.cloneDeep(state)
-                return _.merge(originState, action.payload.state)
-              }
-            }
-            return newState
+      : () => {},
+    onReducer: reducer => {
+      return (state, action) => {
+        const newState = reducer(state, action)
+        if (
+          saveState &&
+          action.type.indexOf(DVA_STORAGE_STATE) !== -1 &&
+          (__DEV__ || prodSaveState)
+        ) {
+          isInit = true
+          if (action.payload.state) {
+            const originState = _.cloneDeep(state)
+            return _.merge(originState, action.payload.state)
           }
         }
-      : undefined,
+        return newState
+      }
+    },
   })
 
   // 加载插件：effect loading
