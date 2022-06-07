@@ -16,6 +16,7 @@ import { navigationRef } from '../RootNavigation'
 
 interface BasicNavigationContainerProps extends NavigationContainerProps {
   preventBackPressDefault?: boolean
+  onExitApp?: () => void | Promise<void>
 }
 
 const PERSISTENCE_KEY = 'NAVIGATION_STATE'
@@ -23,6 +24,7 @@ const PERSISTENCE_KEY = 'NAVIGATION_STATE'
 export default function BasicNavigationContainer({
   preventBackPressDefault,
   children,
+  onExitApp,
   ...props
 }: BasicNavigationContainerProps) {
   const [isMainScreen, setIsMainScreen] = useState(false)
@@ -46,7 +48,13 @@ export default function BasicNavigationContainer({
 
       const currentTime = Date.now()
       if (currentTime - pressBackTime < 2000) {
-        BackHandler.exitApp()
+        const ExitApp = onExitApp?.()
+        // @ts-ignore
+        if (ExitApp?.then) {
+          ExitApp?.then(BackHandler.exitApp)
+        } else {
+          BackHandler.exitApp()
+        }
         return true
       } else {
         ToastAndroid.show('再按一次退出应用', ToastAndroid.SHORT)
