@@ -77,7 +77,7 @@ export const createDvaApp = ({
   // 启动 dva
   app.start()
 
-  if (__DEV__ && saveState) {
+  if ((__DEV__ || prodSaveState) && saveState) {
     Storage.get(DVA_STORAGE_STATE).then(res => {
       const state = JSON.parse(res)
       app._store.dispatch({
