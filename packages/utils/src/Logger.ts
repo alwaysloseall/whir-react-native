@@ -1,9 +1,9 @@
 import RNFS from 'react-native-fs'
 import moment from 'moment'
 
-const { CachesDirectoryPath } = RNFS
+const { ExternalCachesDirectoryPath } = RNFS
 
-export const logsDir = CachesDirectoryPath + `/logs`
+export const logsDir = ExternalCachesDirectoryPath + `/logs`
 
 RNFS.exists(logsDir).then(res => {
   if (!res) {
