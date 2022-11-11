@@ -1,6 +1,6 @@
 {
   "name": "@whir-react-native/utils",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "React Native 工具库",
   "main": "es/index.js",
   "module": "es/index.js",
@@ -38,13 +38,13 @@
     "redux": "^4.0.5"
   },
   "devDependencies": {
-    "react": "16.13.1",
-    "react-native": "0.63.0",
     "@babel/core": "^7.8.4",
     "@babel/plugin-proposal-decorators": "^7.10.5",
     "@babel/runtime": "^7.8.4",
     "babel-plugin-import": "^1.13.0",
-    "metro-react-native-babel-preset": "^0.59.0"
+    "metro-react-native-babel-preset": "^0.59.0",
+    "react": "16.13.1",
+    "react-native": "0.63.0"
   },
   "gitHead": "84634070baae1051bb380c73b4523deabf408f35"
 }
