@@ -10,6 +10,7 @@ import {
   NavigationContainer,
   NavigationContainerProps,
 } from '@react-navigation/native'
+// @ts-ignore
 import { Provider as AntdProvider } from '@ant-design/react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import { navigationRef } from '../RootNavigation'
@@ -29,6 +30,7 @@ export default function BasicNavigationContainer({
 }: BasicNavigationContainerProps) {
   const [isMainScreen, setIsMainScreen] = useState(false)
   const [pressBackTime, setPressBackTime] = useState(0)
+  // @ts-ignore
   const [isReady, setIsReady] = React.useState(__DEV__ ? false : true)
   const [initialState, setInitialState] = React.useState()
 

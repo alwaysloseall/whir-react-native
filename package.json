@@ -30,7 +30,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "father": "^2.30.2",
+    "father-build": "^1.18.4",
     "lerna": "^3.22.1"
   }
 }

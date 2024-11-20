@@ -1,3 +1,4 @@
+// @ts-ignore
 import { Portal, Toast } from '@ant-design/react-native'
 
 let loadingCount = 0

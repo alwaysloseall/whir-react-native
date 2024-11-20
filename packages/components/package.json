@@ -15,8 +15,8 @@
     "directory": "packages/components"
   },
   "scripts": {
-    "compile": "father build",
-    "watch": "father build --watch"
+    "compile": "father-build build",
+    "watch": "father-build build --watch"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",

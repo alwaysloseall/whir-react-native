@@ -1,3 +1,4 @@
+// @ts-ignore
 import { Toast } from '@ant-design/react-native'
 import Logger from '../Logger'
 
